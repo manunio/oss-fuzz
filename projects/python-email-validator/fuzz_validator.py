@@ -21,10 +21,15 @@ from email_validator import EmailSyntaxError, \
 
 
 def TestOneInput(data):
+    fdp = atheris.FuzzedDataProvider(data)
     try:
-        validate_email(data, check_deliverability=False)
+        validated_email = validate_email(
+                data,
+                check_deliverability=False,
+                allow_smtputf8=fdp.ConsumeBool())
     except (EmailSyntaxError, EmailUndeliverableError):
         pass
+
 
 
 def main():

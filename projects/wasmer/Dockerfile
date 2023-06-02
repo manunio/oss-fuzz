@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y make autoconf automake libtool \
 RUN rustup install nightly-2023-03-24
 RUN rustup component add rust-src --toolchain nightly-2023-03-24-x86_64-unknown-linux-gnu
 
-RUN git clone --depth 1 https://github.com/wasmerio/wasmer wasmer
+RUN git clone --depth 1 --single-branch --branch test https://github.com/manunio/wasmer wasmer
 
 RUN mkdir -p $SRC/.llvm && curl --proto '=https' --tlsv1.2 -sSf \
     https://github.com/wasmerio/llvm-custom-builds/releases/download/14.x/llvm-linux-amd64.tar.xz -L -o - | \

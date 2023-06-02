@@ -17,6 +17,6 @@
 FROM gcr.io/oss-fuzz-base/base-builder-python
 RUN apt-get update && apt-get install -y make autoconf automake libtool
 RUN git clone --depth 1 https://github.com/JoshData/python-email-validator python-email-validator
-RUN git clone --depth 1 https://github.com/manunio/fuzz-corpus fuzz-corpus
+RUN git clone --depth 1 --single-branch --branch pev-test https://github.com/manunio/fuzz-corpus fuzz-corpus
 WORKDIR python-email-validator
 COPY build.sh *.py $SRC/
